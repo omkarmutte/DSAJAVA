@@ -34,31 +34,29 @@ public class DifferenceofTwoArrays {
         int k = diff.length - 1;
 
         int c = 0;
-        while (k > 0) {
+
+        while (k >= 0) {
 
             int d = 0;
-            d = d + c;
 
             int ival = i >= 0 ? a1[i] : 0;
             int jval = j >= 0 ? a2[j] : 0;
 
-            if (a1.length > a2.length) {
-                if (a1[i] >= jval) {
+            if(a2.length >= a1.length) {
+                if (a2[j] + c >= ival) {
+                    d = a2[j] + c - ival;
                     c = 0;
-                    d = a1[i] - a2[j];
                 } else {
+                    d = a2[j] + 10 + c - ival;
                     c = -1;
-                    d = a1[i] + 10 - a2[j];
                 }
-
             } else {
-                if (a2[j] >= ival) {
-                    d = a2[j] - a1[i];
+                if(a1[i] + c >= jval) {
+                    d = a1[i] + c - jval;
                     c = 0;
                 } else {
-                    d = a2[j] + 10 - a1[i];
+                    d = a1[i] + 10 + c - jval;
                     c = -1;
-
                 }
             }
 
@@ -70,10 +68,22 @@ public class DifferenceofTwoArrays {
             k--;
         }
 
-        for (int val : diff) {
-            System.out.print(val + " ");
+        int idx = 0;
+
+        while(idx <= diff.length) {
+            if(diff[idx] == 0) {
+                idx++;
+            } else {
+                break;
+            }
         }
 
+        System.out.print("Difference result : ");
+
+        while (idx < diff.length) {
+            System.out.print(diff[idx] + " ");
+            idx++;
+        }
 
     }
 }
