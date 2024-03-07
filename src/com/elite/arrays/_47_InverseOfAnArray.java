@@ -20,19 +20,22 @@ public class _47_InverseOfAnArray {
     // inverseofAnArray:: This method takes given array as an input make it inverse and call display function for printing
     public static void inverseofAnArray(int[] arr) {
         // here freshers make mistake you need to make new array and store the values into it because if we try to change existing array it will collapse and don't create valid answers
-        int[] inv = new int[arr.length];
-        // before inverse printing
+
         System.out.print("before inverse : ");
         display(arr);
-        // logic for inverse an array
-        for (int i = 0; i < arr.length; i++) {
-            int val = arr[i];
-            inv[val] = i;
+        // logic
+        int[] inv = new int[arr.length];
+
+        int idx = 0;
+        while (idx < arr.length) {
+            int val = arr[idx];
+            inv[val] = idx;
+            idx++;
         }
-        // after inverse printing
-        System.out.println();
-        System.out.print("after inverse : ");
+
+        System.out.print("\nafter inverse : ");
         display(inv);
+
     }
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
@@ -47,5 +50,5 @@ public class _47_InverseOfAnArray {
 
         // calling inverseofAnArray method
         inverseofAnArray(arr);
-    }
-}
+    }// main
+}// _47_InverseOfArray
