@@ -1,4 +1,6 @@
 package com.elite.arrays;
+import java.util.Collections;
+import java.util.Arrays;
 
 import java.util.Scanner;
 
@@ -15,17 +17,16 @@ public class _46_ReverseAnArray {
         // logic
         int li = 0;
         int ri = arr.length - 1;
-
         while (li < ri) {
             int temp = arr[li];
             arr[li] = arr[ri];
             arr[ri] = temp;
-
             li++;
             ri--;
         }
 
         display(arr);
+
     }
 
     public static void main(String[] args) {
