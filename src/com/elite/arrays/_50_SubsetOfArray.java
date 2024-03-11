@@ -35,7 +35,7 @@ public class _50_SubsetOfArray {
             }
             System.out.println(set);
         }
-    } // printAllSubsetForAnArray
+     } // printAllSubsetForAnArray
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
