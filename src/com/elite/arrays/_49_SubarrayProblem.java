@@ -21,9 +21,9 @@ public class _49_SubarrayProblem {
     public static void printAllSubArraysForAnArray(int[] arr) {
         // logic
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
+            for (int j = i; j < arr.length; j++) {
                 for (int k = i; k <= j; k++) {
-                    System.out.print(arr[k]+"\t");
+                    System.out.print(arr[k] + " ");
                 }
                 System.out.println();
             }
@@ -34,14 +34,12 @@ public class _49_SubarrayProblem {
         System.out.print("Enter size of an array : ");
         int size = Integer.parseInt(scn.nextLine());
         int[] arr = new int[size];
-        // taking input elements for an array
+        // inputs
         for (int i = 0; i < arr.length; i++) {
             System.out.print("Enter " + i + " element : ");
             arr[i] = Integer.parseInt(scn.nextLine());
         }
 
-        // calling printAllSubArraysForAnArray Method
         printAllSubArraysForAnArray(arr);
-
     }
 }
