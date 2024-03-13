@@ -1,26 +1,26 @@
-package com.elite._2Darrays;
+package com.elite._2d_arrays;
 
 import java.util.Scanner;
 
-public class WaveTraversalExtra {
+public class _54_WaveTraversal {
+    // waveTraversal:: This method takes array as an input and print the elements of that array in wave format line by line
     public static void waveTraversal(int[][] arr) {
 
         System.out.println("\nDisplaying the array in wave format ..\n");
 
         // logic
-        for (int i = 0; i < arr.length; i++) {
-            if (i % 2 == 0) {
-                for (int j = 0; j < arr[0].length; j++) {
+        for (int j = 0; j < arr[0].length; j++) {
+            if (j % 2 == 0) {
+                for (int i = 0; i < arr.length; i++) {
                     System.out.println(arr[i][j]);
                 }
             } else {
-                for (int j = arr[0].length - 1; j >= 0; j--) {
+                for (int i = arr.length - 1; i >= 0; i--) {
                     System.out.println(arr[i][j]);
                 }
             }
         }
     }
-
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         // Taking the input for an array
@@ -45,5 +45,6 @@ public class WaveTraversalExtra {
 
         // calling waveTraversal()
         waveTraversal(arr);
+
     } // main
-} // WaveTraversalExtra
+} // _54_WaveTraversal

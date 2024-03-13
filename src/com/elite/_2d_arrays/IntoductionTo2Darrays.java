@@ -1,4 +1,4 @@
-package com.elite._2Darrays;
+package com.elite._2d_arrays;
 
 import java.util.Scanner;
 
