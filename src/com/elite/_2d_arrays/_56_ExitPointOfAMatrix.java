@@ -3,71 +3,76 @@ package com.elite._2d_arrays;
 import java.util.Scanner;
 
 public class _56_ExitPointOfAMatrix {
-    public static void display(int[][] arr, int r, int c) {
-        for (int i = 0; i < r; i++) {
-            for (int j = 0; j < c; j++) {
+    static Scanner scn = null;
+
+    public static void display(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
                 System.out.print(arr[i][j] + " ");
             }
             System.out.println();
         }
     }
-
-    // exitPointOfAMatrix :: This method takes array as an input [array having only 0's and 1's] and finds the exit point of a matrix
-    public static void exitPointOfAMatrix(int[][] arr) {
-        // logic
-        int dir = 0; // 0 -> e | 1 -> s | 2 -> w | 3 -> n
-        int i = 0;
-        int j = 0;
-
-        while (true) {
-            // controller
-            dir = (dir + arr[i][j]) % 4;
-
-            if (dir == 0) {  // east:  j++
-                j++;
-            } else if (dir == 1) { // south: i++
-                i++;
-            } else if (dir == 2) { // west:  j--
-                j--;
-            } else if (dir == 3) { // north: i--
-                i--;
-            }
-
-            if (i < 0) {
-                i++;
-                break;
-            } else if (j < 0) {
-                j++;
-                break;
-            } else if (i == arr.length) {
-                i--;
-                break;
-            } else if (j == arr[0].length) {
-                j--;
-                break;
-            }
-        }
-        System.out.println("exit position of matrix is : ("+i+","+j+")");
-    }
-    public static void main(String[] args) {
-        Scanner scn = new Scanner(System.in);
-        // taking input for an array
-        System.out.print("Enter row value of a array : ");
-        int r = Integer.parseInt(scn.nextLine());
-        System.out.print("Enter column value of a array : ");
-        int c = Integer.parseInt(scn.nextLine());
-
-        int[][] arr = new int[r][c];
+    public static int[][] finllArrayWithElements(int r, int c) {
+        scn = new Scanner(System.in);
+        int[][] temp = new int[r][c];
+        // taking input
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
                 System.out.print("Enter (" + i + "," + j + ") element : ");
-                arr[i][j] = Integer.parseInt(scn.nextLine());
+                temp[i][j] = Integer.parseInt(scn.nextLine());
             }
         }
-        // printing array before finding exit point
-        display(arr, r, c);
+        return temp;
+    }
 
-        // calling exitPointOfAMatrix
-        exitPointOfAMatrix(arr);
+    public static void exitPointOfAnMatrix(int[][] arr) {
+        int i = 0;
+        int j = 0;
+        int dir = 0;
+
+        while (true) {
+            dir = (dir + arr[i][j]) % 4;
+
+            if (dir == 0) { // east
+                j++;
+            } else if (dir == 1) { // south
+                i++;
+            } else if (dir == 2) { // west
+                j--;
+            } else if (dir == 3) { // north
+                i--;
+            }
+
+            // top wall
+            if (i < 0) {
+                i++;
+                break;
+            } else if (j < 0) { // left wall
+                j++;
+                break;
+            } else if (i == arr.length) { // bottom wall
+                i--;
+                break;
+            } else if (j == arr[0].length) { // right wall
+                j--;
+                break;
+            }
+
+        } // while
+        System.out.println("Exit point of given matrix is : ("+i+","+ j+")");
+    }
+
+    public static void main(String[] args) {
+        scn = new Scanner(System.in);
+        System.out.print("Enter r value for array : "); // taking input for row
+        int r = Integer.parseInt(scn.nextLine());
+        System.out.print("Enter c value for array : "); // taking input for column
+        int c = Integer.parseInt(scn.nextLine());
+        int[][] arr = finllArrayWithElements(r, c);
+        display(arr);
+        System.out.println();
+        // calling exitPointOfAnMatrix
+        exitPointOfAnMatrix(arr);
     } // main
 } // _56_ExitPointOfAMatrix
