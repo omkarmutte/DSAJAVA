@@ -34,65 +34,68 @@ Constraints : .. kuch
 */
 
 public class _53_MatrixMultiplication {
-    public static void display(int[][] prod) {
-        for (int i = 0; i < prod.length; i++) {
-            for (int j = 0; j < prod[0].length; j++) {
-                System.out.print(prod[i][j] + "   ");
+    static Scanner scn = null;
+    public static void display(int[][] arr) {
+        // displaying array
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                System.out.print(arr[i][j] + " ");
             }
             System.out.println();
         }
     }
-    // matrixMultiplication:: This method takes 2 arrays as an input create one more array which holes the multiplication output of other array
-    public static void matrixMultiplication(int[][] a1, int[][] a2, int r1, int c1, int r2, int c2) {
+
+    public static int[][] fillArrayWithValues(int r, int c) {
+        scn = new Scanner(System.in);
+
+        int[][] arr = new int[r][c];
+
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                System.out.print("Enter (" + i + "," + j + ") element : ");
+                arr[i][j] = Integer.parseInt(scn.nextLine());
+            }
+        }
+        return arr;
+    }
+
+    public static void matrixMultiplication(int[][] a1, int[][] a2) {
         // logic
-        int[][] prod = new int[r1][c2];
-        // iterating over each individual element of prod 2-d array
+        int[][] prod = new int[a1[0].length][a2.length];
         for (int i = 0; i < prod.length; i++) {
             for (int j = 0; j < prod[0].length; j++) {
-                for (int k = 0; k < c1; k++) {
+                for (int k = 0; k < a2.length; k++) {
                     prod[i][j] += a1[i][k] * a2[k][j];
                 }
             }
         }
-
+        System.out.println();
+        System.out.println("Matrix Multiplication Result..");
         display(prod);
     }
     public static void main(String[] args) {
-        Scanner scn = new Scanner(System.in);
-        // input for first array
-        System.out.print("Enter row value for 1st array : ");
+        scn = new Scanner(System.in);
+        // input for array a1
+        System.out.print("Enter row value for array a1 : ");
         int r1 = Integer.parseInt(scn.nextLine());
-        System.out.print("Enter column value for 1st array : ");
+        System.out.print("Enter column value for array a1 : ");
         int c1 = Integer.parseInt(scn.nextLine());
-        System.out.print("Enter row value for 2nd array : ");
-        int r2 = Integer.parseInt(scn.nextLine());
-        System.out.print("Enter column value for 2nd array : ");
-        int c2 = Integer.parseInt(scn.nextLine());
-        int[][] a1 = new int[r1][c1];
-        int[][] a2 = new int[r2][c2];
+        System.out.println("Enter values for array a1 : ");
+        int[][] a1 = fillArrayWithValues(r1, c1);
+        System.out.println();
+        display(a1);
 
-        // validating whether multiplication is possible or not
-        if (c1 != r2) {
-            System.out.println("Invalid input!");
-            return;
-        }
-        // taking input values to fill a1 array
-        for (int i = 0; i < r1; i++) {
-            for (int j = 0; j < c1; j++) {
-                System.out.print("Enter (" + i + "," + j + ") element for first array : ");
-                a1[i][j] = Integer.parseInt(scn.nextLine());
-            }
-        }
-        // taking input values to fill a2 array
-        for (int i = 0; i < r2; i++) {
-            for (int j = 0; j < c2; j++) {
-                System.out.print("Enter (" + i + "," + j + ") element for second array : ");
-                a2[i][j] = Integer.parseInt(scn.nextLine());
-            }
-        }
+        // input for array a2
+        System.out.print("Enter row value for array a2 : ");
+        int r2 = Integer.parseInt(scn.nextLine());
+        System.out.print("Enter column value for array a2 : ");
+        int c2 = Integer.parseInt(scn.nextLine());
+        System.out.println("Enter values for array a2 : ");
+        int[][] a2 = fillArrayWithValues(r2, c2);
+        System.out.println();
+        display(a2);
 
         // calling matrixMultiplication() method
-        matrixMultiplication(a1, a2, r1, c1, r2, c2);
-
+        matrixMultiplication(a1, a2);
     }
 }
