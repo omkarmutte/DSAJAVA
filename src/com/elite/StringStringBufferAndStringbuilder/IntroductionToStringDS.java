@@ -1,7 +1,6 @@
-package com.elite.string$stringbuffer$andstringbuilder;
+package com.elite.StringStringBufferAndStringbuilder;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class IntroductionToStringDS {
     public static void main(String[] args) {

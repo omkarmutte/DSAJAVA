@@ -1,4 +1,4 @@
-package com.elite.string$stringbuffer$andstringbuilder;
+package com.elite.StringStringBufferAndStringbuilder;
 
 import java.util.Scanner;
 
